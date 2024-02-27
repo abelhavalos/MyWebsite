@@ -118,9 +118,9 @@ height:auto;
 }
 
 .image{
-width:20%;
-height:40%;
+width:30%;
+height:50%;
 position:absolute;
-bottom:10px;
+bottom:0px;
 right:80px;
 }
