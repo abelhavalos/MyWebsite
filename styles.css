@@ -113,14 +113,14 @@ margin-bottom:30px;
 
 .image img{
 display:block;
-width:1%;
+width:100%;
 height:auto;
 }
 
 .image{
-width:1%;
-height:1%;
+width:30%;
+height:70%;
 position:absolute;
-bottom:0px;
-right:0px;
+bottom:50px;
+right:100px;
 }
