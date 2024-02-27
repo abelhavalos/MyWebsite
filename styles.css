@@ -89,7 +89,7 @@ color:#df4766;
 
 .detail{
 position:absolute;
-top:5%;
+top:15%;
 left:8%;
 }
 
@@ -121,6 +121,6 @@ height:auto;
 width:20%;
 height:40%;
 position:absolute;
-bottom:50px;
+bottom:150px;
 right:80px;
 }
