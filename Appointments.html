@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+		<meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+		<title>Set Appointment</title>
+
+<style>
+*{margin: 0;}
+body { margin: 0; font-family: Arial, sans-serif; background: #f7f9fc; }
+header { padding: 0px 0px; margin-bottom:40px;text-align: center; background:#0f172a; color: white; }
+header h1 { font-size: 42px; margin-bottom: 10px; }
+header p { font-size: 18px; opacity: 0.9; }
+form {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,10.08);
+  font-family: system-ui, sans-serif;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+input, textarea {
+  width: 90%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #4a8cff;
+  box-shadow: 0 0 0 3px rgba(74,140,255,0.25);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: black;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background:  #0b1120;
+}
+
+button:active {
+  transform: scale(.97);
+}
+
+/* Loading spinner */
+button.loading {
+  pointer-events: none;
+  background:  #0b1120;
+  color: transparent;
+  position: relative;
+}
+
+button.loading::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Success checkmark */
+.success {
+  display: none;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2ecc71;
+  margin-top: 1rem;
+  animation: pop .4s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+footer { text-align: center; padding: 20px; background: black; color: white; margin-top: 40px; }
+</style>
+</head>		
+<body>
+	<header>
+  <h1>Abel H Avalos</h1>
+  <h3>Computer Operator • Programmer • System Analyst</h3>
+  <h4>Turning complex systems into simple, powerful tools</h4>
+</header>
+		<form id="contactForm" method="post">
+					<h1>
+			 Set Appointment
+		</h1>
+  <!-- Name -->
+  <label for="name">Name</label><br>
+  <input type="text" id="name" name="Name" placeholder="Your full name" required>
+  <br><br>
+
+  <!-- Cellphone -->
+  <label for="cellphone">Cellphone</label><br>
+  <input type="tel" id="cellphone" name="Cellphone" placeholder="(555) 555-5555" required>
+  <br><br>
+
+  <!-- Email -->
+  <label for="email">Email</label><br>
+  <input type="email" id="email" name="Email" placeholder="you@example.com" required>
+  <br><br>
+
+  <!-- Date-Time -->
+  <label for="datetime">Date-Time</label><br>
+  <input type="datetime-local" id="datetime" name="Date-Time" required>
+  <br><br>
+
+  <!-- Message -->
+  <label for="message">Message</label><br>
+  <textarea id="message" name="Message" rows="4" placeholder="Type your message here..." required></textarea>
+  <br><br>
+   <button type="submit">Submit</button>
+  <div class="success">✓ Appointment request sent!</div>
+</form>
+<footer>
+  © 2026 Abel H Avalos — All Rights Reserved
+</footer>
+<script>
+<script>
+const scriptURL ="https://script.google.com/macros/s/AKfycby4rXUKHrdfcgl7L5oUrSGFoH84oUwbk4lnFFt1kVzWhgg3O56cqJ68tJYnYM6Sp08i/exec";
+
+const form = document.getElementById("contactForm");
+const button = form.querySelector("button");
+const success = form.querySelector(".success");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  button.classList.add("loading");
+
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form),
+    });
+
+    button.classList.remove("loading");
+    success.style.display = "block";
+    form.reset();
+  } catch (error) {
+    button.classList.remove("loading");
+    alert("Something went wrong. Please try again.");
+  }
+});
+</script>		
+</body>
+</html>
